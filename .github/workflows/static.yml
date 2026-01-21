@@ -47,7 +47,9 @@ jobs:
           for f in notes/*.tex; do
             base="$(basename "$f" .tex)"
             out="_site/${base}.html"
-            pandoc "$f" -s --toc --mathjax -o "$out"
+            pandoc "$f" -s --toc \
+            --mathjax="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" \
+            -o "_site/$name.html"
             echo "  <li><a href=\"${base}.html\">${base}</a></li>" >> _site/index.html
           done
 
