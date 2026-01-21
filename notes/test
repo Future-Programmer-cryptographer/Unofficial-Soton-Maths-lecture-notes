@@ -1,0 +1,108 @@
+\section{What is this, why does this exist}
+It would be a good idea to read the previous chapter on Simplex to refresh memory of what it does. 
+
+But OCR MEI is needy, so we also need to know how we can use LP to model and solve real-world problems (so they say...) that involve optimisation. It's actually pretty cool, but can also get a bit boring. 
+
+You need to be able to apply to LP to these four areas, so it's ultimately good revision! 
+
+\begin{enumerate}
+    \item Shortest path 
+    \item Longest path 
+    \item Capacity networks
+    \item Matching problems 
+    \item Allocation 
+    \item Transportation 
+\end{enumerate} 
+
+The best way to practice this to topic is.. well - to just do shed loads of questions on them. MEI can be pretty harsh on them, so doing questions is the way to go as boring as it sounds!
+
+\section{Indicator Variables}
+
+
+\section{Network Flows}
+This is a bit different from shortest/longest paths. In this case, the variables are the flows through the arcs. 
+
+So how the fuck do you deal with this if you're not using indicator variables? 
+\begin{itemize}
+    \item Maximise flows going out of S 
+    \item Maximise flows going into T
+\end{itemize}
+
+Consider this flow below: 
+
+Out objective function here could be 
+
+$$
+SA + SB
+$$
+
+Subject to: this is flow going it take away the flow out = 0 
+$$
+SA + BA - AB - AT - AT = 0 
+$$
+$$
+SB + AB - BA - BT = 0 
+$$
+$$
+SA \leq 8 
+$$
+$$
+SB \leq 5
+$$
+$$
+AB \leq 7 
+$$
+$$
+BA\leq 7 
+$$
+...etc 
+
+
+\subsection{Finding maximum flows}
+Either look at sum of edges come out of S, or sum of edges going into T
+
+
+\section{CPA}
+
+WE want to minimise the time taken to complete a task. 
+
+
+\section{Summary}
+I've had to just do a summary! (It's getting late and I ought not be working too late into my bedtime and (2) - best way like I said to actually do questions on these topics) 
+
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|p{3.5cm}|p{3.5cm}|p{3.5cm}|p{4cm}|}
+\hline
+\textbf{Problem} & \textbf{Objective} & \textbf{Variables} & \textbf{Key Constraints} \\
+\hline
+\textbf{Shortest Path} & Minimise total distance or cost & $x_{ij} \in \{0,1\}$ (or $\geq 0$ in LP relaxation) & Flow conservation at all nodes; 1 unit out from start, 1 unit into end \\
+\hline
+\textbf{Longest Path (CPA)} & Maximise event time at the end node & $d_i \in \mathbb{R}$ (event start times) & $d_j \geq d_i + t_{ij}$ for each arc $i \to j$ \\
+\hline
+\end{tabular}
+\caption{LP Formulations for Shortest and Longest Path Problems}
+\end{table}
+
+
+
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|p{3cm}|p{3.5cm}|p{3.5cm}|p{4cm}|}
+\hline
+\textbf{Application} & \textbf{What’s Being Optimised?} & \textbf{LP Objective} & \textbf{Key Constraints} \\
+\hline
+\textbf{Network Flow} & Total flow from source to sink & Maximise flow & Arc capacities, flow conservation \\
+\hline
+\textbf{Allocation} & Task performance, resource use & Maximise benefit or minimise cost & Resource availability \\
+\hline
+\textbf{Transportation} & Goods delivery & Minimise cost & Supply and demand \\
+\hline
+\textbf{Matching} & Pairings between elements & Maximise weight / minimise cost & Each item matched once \\
+\hline
+\end{tabular}
+\caption{Summary of Linear Programming Applications}
+\end{table}
+
