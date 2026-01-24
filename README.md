@@ -4,7 +4,7 @@ These notes are not intended as a verbatim record of lectures, nor a complete te
 
 Ideas often appear here after I have struggled with them on paper and more often than not, misunderstood them. As a result, a lot of the explanations emphasises intuition and alternative viewpoints that helped concepts click for me, even if those perspectives were not presented explicitely in lectures. 
 
-Where appropriate, I include questions I initially found confusing, common pitfalls, and informal explanation alongside formal definitions and proofs. The aim clarity over maximal completeness. So if something here feels over-explained, that's usually become it once confused me.
+Where appropriate, I include questions I initially found confusing, common pitfalls, and informal explanation alongside formal definitions and proofs. The aim is clarity over maximal completeness. So if something here feels over-explained, that's usually become it once confused me.
 
 These notes may contain errors or simplifications. Always cross-check with official lecture notes, textbooks, or lecturers’ guidance before relying on them.
 
