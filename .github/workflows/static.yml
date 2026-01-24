@@ -40,14 +40,16 @@ jobs:
             <title>Notes</title>
           </head>
           <body>
-            <h1>Notes</h1>
+            <h1>Unofficial University of Southampton BSc Mathematics Notes</h1>
             
             <p>
               These notes are not intended as a verbatim record of lectures, nor a complete textbook account of the modules. Instead, they reflect how I came to understand the material. They may contain errors or simplifications. Always cross-check with official lecture notes, textbooks, or lecturers’ guidance before relying on them.
             <\p>
+            
             <p>
-            Ideas often appear here after I have struggled with them on paper and more often than not, misunderstood them. As a result, a lot of the explanations emphasises intuition and alternative viewpoints that helped concepts click for me, even if those perspectives were not presented explicitely in lectures
+              Ideas often appear here after I have struggled with them on paper and more often than not, misunderstood them. As a result, a lot of the explanations emphasises intuition and alternative viewpoints that helped concepts click for me, even if those perspectives were not presented explicitely in lectures
             <\p>
+            
             <p>
               Where appropriate, I include questions I initially found confusing, common pitfalls, and informal explanation alongside formal definitions and proofs. The aim is clarity over maximal completeness. So if something here feels over-explained, that's usually become it once confused me.
             <\p>
