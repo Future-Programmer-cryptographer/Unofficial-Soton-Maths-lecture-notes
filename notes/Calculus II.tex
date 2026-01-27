@@ -11,7 +11,7 @@
 
 \part{Ordinary Differential Equations}
 
-\chapter{First-Order Ordinary Differential Equations}
+\chapter{First-Order ODE}
 
 When dealing with ODEs \footnote{Get used to seeing them because they will appear everywhere}, there are a few main ways of solving them.  
 
@@ -27,28 +27,83 @@ $$
 
 \section{Integrating Factor}
 
-This method is used to solve Linear 1st order ODEs. Say we have an ODE in the form of: 
+This method is used to solve Linear 1st order ODEs. Say we have an ODE in the form of:
 $$
 \frac{dy}{dx} + p(x) y = q(x) 
 $$
 
-Then we can introduce this term called the \textbf{integrating factor} such that: 
+The key thing to note here is that $y$ is linear, and the coefficients on depend on $x$ 
+
+When we look at the ODE above, we might wish that it were the derivative of a product because: 
 $$
-\frac{d}{dx} [ y(x) e^{P(x})] = q(x) e^{P(x)} \text{ with } P(x) = \int p(x)\ dx 
+\frac{d}{dx} (\mu y) = \mu \frac{dy}{dx} + \mu y 
 $$
-Then we multiply by the integrating factor (think back to converting it to a direct integration form). 
-\\ Note that the constant appears after we multiply by the integrating factor, not before. 
+
+
+And if we compare that with $\mu \frac{dy}{dx} + \mu p(x) \ y$, they conly match if $\mu = \mu \ p(x)$
+
+
+Therefore, we can introduce this term called the \textbf{integrating factor} so that we can make the DE separable and turn the LHS into a product derivative:
+$$
+\frac{d}{dx} [ y(x) e^{P(x})] = q(x) e^{\mu(x)} \text{ with } \mu(x) = \int p(x)\ dx 
+$$
+Then we multiply by the integrating factor (think back to converting it to a direct integration form). Note that the constant appears after we multiply by the integrating factor, not before. 
 $$ 
-y(x) = e^{-P(x)} \left[ \int q(x) e^{P(x)} \ dx + c] \right]
+y(x) = e^{-P(x)} \left[ \int q(x) e^{p(x)} \ dx + c] \right]
 $$
 
+\subsection{Note on integrating factor}
 
+One might wonder why $\mu = e^{\int p(x) \ dx} $ is the integrating factor and nothing else. The short answer is that we need a function whose derivative is proportional to itself, something we need for the product rule to work. 
+
+The goal we had in mind was to turn $\frac{d}{dx} + p(x) y$ into a derivative of a product $\frac{d}{dx} (\mu \ y)$ using the product rule
+
+So when we try and solve $\frac{d\mu}{dx} = p(x) \ \mu$ after separating the variables and integrating, we get $\mu = e^{\int p(x) \ dx}$ and voila! We have the exponential. 
+
+\section{Homogeneous ODEs}
+
+A 1st order ODE is called \textbf{homogeneous}\footnote{If we're talking origins of words, homogeneous is Greek which means something of the same kind/type/origin. So for ODEs, it just means that equations treat the variables the same way under scaling, hence the ratio!} if it can be written in the form of: 
+$$ 
+\frac{dy}{dx}= F \left (\frac{y}{x} \right)
+$$
+
+i.e. the RHS depends only on the $y/x$ ratio.
+
+Usually in questions, this form may not be obvious, and some rearrangement will be required to get it in the intended form, but once we have it, we can make the substitution: 
+
+$$
+z = \frac{y}{x} \implies y = z \ x 
+$$
+
+Then, we can use the product rule to differentiate and get: 
+$$
+\frac{dy}{dx} = z + x \ \frac{dz}{dx}
+$$
+
+And now we can substitute this back into the equation and rearrange to get: 
+$$
+z + x \ \frac{dz}{dx} = F(z)  \implies x \ \frac{dz}{dx} = F(z) - z
+$$
+
+We can now see that it's a separable ODE: 
+$$
+\frac{1}{F(z) - z} \ dz = \frac{1}{x} \ dx 
+$$
+
+\subsection{Note on the substitution}
+
+The intuition behind the substitution was not covered in lectures, hence I endeavour to explain it in my notes. 
+
+It mostly comes down to the fact that the homogeneous equation is treating the variables like a ratio, which isn't great to deal with it. So when we introduce another variable, we turn the equation into something we know how to differentiate using product rule. This will become more useful later when dealing with energy calculations later (hopefully!) as it makes separation of variables possible. 
+
+Think of it as $u$-sub when dealing with integration, it's exactly the same thing. But more importantly, if scaling both variables changes nothing, the only thing that something depends on is $y/x$, hence the substitution. Think of it as describing the gradient of a line, we can do that with $m = y/x$ or $y = mx +c$ 
 
 %Always wondered why the auxilary solution was what it is.. 
 
 
 %What does it mean for the derivative to be a linear operator?? 
 
+\chapter{Second Order ODE}
 
 \part{Multivariable Calculus}
 
