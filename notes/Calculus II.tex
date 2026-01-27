@@ -1,4 +1,4 @@
-\title{Calculus II}
+\title{MATH1065: Calculus II}
 \author{Shub Das \\ sd2g25@soton.ac.uk}
 \date{\today}
 
@@ -8,5 +8,48 @@
 
 
 \tableofcontents 
+
+\part{Ordinary Differential Equations}
+
+\chapter{First-Order Ordinary Differential Equations}
+
+When dealing with ODEs \footnote{Get used to seeing them because they will appear everywhere}, there are a few main ways of solving them.  
+
+I won't be including examples in most of the sections, mostly because well, just do a bunch of questions to get better at ODEs. 
+
+\section{Separation of Variables}
+
+This is when the ODE is in terms of $x$ and $y$ so that we can separate the variables 
+
+$$
+g(y) \frac{dy}{dx} = h(x) \implies \int g(y) \ dy = \int h(x) \ dx + c 
+$$
+
+\section{Integrating Factor}
+
+This method is used to solve Linear 1st order ODEs. Say we have an ODE in the form of: 
+$$
+\frac{dy}{dx} + p(x) y = q(x) 
+$$
+
+Then we can introduce this term called the \textbf{integrating factor} such that: 
+$$
+\frac{d}{dx} [ y(x) e^{P(x})] = q(x) e^{P(x)} \text{ with } P(x) = \int p(x)\ dx 
+$$
+Then we multiply by the integrating factor (think back to converting it to a direct integration form). 
+\\ Note that the constant appears after we multiply by the integrating factor, not before. 
+$$ 
+y(x) = e^{-P(x)} \left[ \int q(x) e^{P(x)} \ dx + c] \right]
+$$
+
+
+
+%Always wondered why the auxilary solution was what it is.. 
+
+
+%What does it mean for the derivative to be a linear operator?? 
+
+
+\part{Multivariable Calculus}
 
 
