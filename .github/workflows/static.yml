@@ -45,6 +45,12 @@ jobs:
           <body>
             <h1>Unofficial University of Southampton BSc Mathematics Notes</h1>
 
+            EOF
+
+            echo "<p><em>Last updated: $(date '+%d %B %Y')</em></p>" >> _site/index.html
+            
+            cat >> _site/index.html <<'EOF'
+
             <p>These notes are not intended as a verbatim record of lectures, nor a complete textbook account of the modules. Instead, they reflect how I came to understand the material. They may contain errors or simplifications. Always cross-check with official lecture notes, textbooks, or lecturers’ guidance before relying on them.</p>
 
             <p>Ideas often appear here after I have struggled with them on paper and more often than not, misunderstood them. As a result, a lot of the explanations emphasise intuition and alternative viewpoints that helped concepts click for me, even if those perspectives were not presented explicitly in lectures.</p>
