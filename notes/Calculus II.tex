@@ -40,7 +40,7 @@ $$
 $$
 
 
-And if we compare that with $\mu \frac{dy}{dx} + \mu p(x) \ y$, they conly match if $\mu = \mu \ p(x)$
+And if we compare that with $\mu \frac{dy}{dx} + \mu p(x) \ y$ they only match if $\mu = \mu \ p(x)$
 
 
 Therefore, we can introduce this term called the \textbf{integrating factor} so that we can make the DE separable and turn the LHS into a product derivative:
@@ -98,12 +98,57 @@ It mostly comes down to the fact that the homogeneous equation is treating the v
 
 Think of it as $u$-sub when dealing with integration, it's exactly the same thing. But more importantly, if scaling both variables changes nothing, the only thing that something depends on is $y/x$, hence the substitution. Think of it as describing the gradient of a line, we can do that with $m = y/x$ or $y = mx +c$ 
 
-%Always wondered why the auxilary solution was what it is.. 
-
-
-%What does it mean for the derivative to be a linear operator?? 
-
 \chapter{Second Order ODE}
+
+
+\section{2nd order ODEs with constant coefficients}
+
+Okay, lots of words in that section title, and it's important we know what we mean when we talk about them. 
+
+The term \textbf{order} is to do with the derivative. So 2nd order means the highest derivative appearing is $\frac{d^2y}{dx^2}$
+
+This also means the solution space has two degrees of freedom or independent behaviours or constants 
+
+\textbf{Linear} means the function $y^{\prime \prime}$ and its derivatives appear to the first \textbf{power}, they are not multiplied and the coefficients are independent of $y$. The term linear here is in fact linked to linear algebra and satisfies the axioms of linearity, i.e. if $y_1$ and $y_2$ are solutions, then so is $c_1y_1 + c_2 y_2$. So the solution here is a vector space. 
+
+\textbf{Constant Coefficients} - all this means is that the numbers multiplying $y^{\prime \prime} y^{\prime}$ and $y$ do not depend on $x$. And this is also the reason why exponentials appear. 
+
+As another note, \textbf{homogeneous} for a second order ODE just means that the RHS term is $0$, or in dynamics terms, there is no forcing term. 
+
+\section{Method of solution} 
+
+I won't go into detail about the cases or the method for solving DEs, as this is something  covered in the actual lecture notes. What I will talk about, however, is some of the intuition behind the method and the roots and the solutions. 
+
+\subsection{Auxiliary equation}
+
+This is also called the characteristic equation\footnote{I hope that rings a bell from eigenvalues and linear algebra!} 
+
+Suppose we substitute $y = e^{\lambda x}$ into the 2nd order DE 
+$$
+a \frac{d^2y}{dx^2} + b \frac{dy}{dx} + cy = 0
+$$
+
+We get 
+$$
+(a\lambda^2 + b\lambda + c)e^{\lambda x} = 0
+$$
+
+And since $e^{\lambda x} \neq 0$, we are left with $a \lambda^2 + b\lambda + c = 0$ which you might notice is very similar to when hunting for eigenvalues from linear algebra. 
+
+There's is a very good reason for why this is called the characteristic equation, and its because the roots characterise the behaviour of the system that is modelled by the ODE. 
+
+\subsection{Roots} 
+
+As I mentioned before, a 2nd order ODE has a 2D solution space, so as we found that the auxiliary equation is a quadratic, we get roots (counting multiplicity). Therefore, all solutions are just the linear combination of those roots, and we can be certain that nothing is missing from our solution space. 
+
+This is also why if our discriminant of the quadratic is $0$, the second solution is multiplied by $x$ so that our solutions remain independent. In other words, $e^{\lambda x}$ has already used up one dimension, so $xe^{\lambda x}$ is the next simplest independent function\footnote{This can later be verified via Wronskian}
+
+\section{Euler Type equations}
+
+
+\chapter{Wronskian}
+
+
 
 \part{Multivariable Calculus}
 
