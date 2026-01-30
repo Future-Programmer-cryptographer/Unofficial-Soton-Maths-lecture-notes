@@ -1,15 +1,130 @@
-
-
-\title{MATH 1057: Dynamics & Relativity}
+\title{MATH 1057: Dynamics \& Relativity}
 \author{Shub Das \\ sd2g25@soton.ac.uk}
 \date{\today}
 
 \maketitle
 
-\newpage
-
-
 \tableofcontents 
+
+
+\chapter{Newton's Laws}
+
+\section{Foundations}
+
+Newton's Laws are more about statements about how nature behaves, not just mere definitions. Forces in this sense then causes changes in motion, not motion itself. 
+
+This module is not Linear Algebra II where notation can be forgiven. When we come to work with constants of integration, they might be scalars or vectors. 
+
+
+\subsection{Inertial frame}
+
+An inertial frame is just a reference frame, and the term inertia describes an objects tendency to either stay in motion or at rest depending on the forces that act on it. So Newton's 1st Law just tells us which frames are allowed. 
+
+\subsection{Change in Momentum}
+
+We've all seen this version of Newton's 2nd Law: 
+$$
+F = ma 
+$$
+
+However, unfortunately (or fortunately), this is only an approximation because it assumes that mass is constant. The real deal with the 2nd law is all to do with changes and conservation in momentum. 
+
+A few reasons why $F=ma$ fails: think about rockets losing fuel, or a falling snowflake, all of these involve mass changing with time. Hence, Newton's 2nd law is better written as:
+$$
+\vec{F} = \frac{d \vec{p}}{dt}
+$$
+
+\subsection{Coordinates and time dependence}
+
+The key idea here is that basis vectors may be either constants (Cartesian) or time dependent (polar). The components may also change even if the magnitude doesn't. 
+
+This will later be helpful when working with circular motion and rotating frames. 
+
+\subsection{Notation}
+
+Quite often we will see the notation 
+$$
+\frac{d\vec{x} (t)}{dt}
+$$
+
+What this means is that we are different each components, so the vector itself isn't changing, but the components are: 
+
+$$
+\vec{x} (t) = \begin{pmatrix}
+    x(t) \\
+    y(t) \\
+    z(t) 
+\end{pmatrix}
+\implies \dot{\vec{x}}(t) = \begin{pmatrix}
+    \dot{x}(t) \\
+    \dot{y}(t) \\
+    \dot{z}(t) 
+\end{pmatrix}
+$$
+
+\section{Inner product and circular motion} 
+
+Let's pretend we don't know Newton's laws and just ask ourselves- what would the velocity and acceleration look like if a particle moves in a circle. Being able to think about this will give us most of the insight. 
+
+If we take a circle of radius $R$ centered at the origin, then our position vector $\vec{r}(t)$ can be written as: 
+$$
+\vec{r}(t) = R(\cos \theta (t), \sin \theta (t)) 
+$$
+
+If we take the first derivative, it shows us that velocity is tangential, and second derivative will show us that the acceleration points inward. 
+
+So by using the inner product (which is the same as dot product), we find that position and acceleration are perpendicular to each other. 
+
+\section{ODEs}
+
+Most of this is covered in Calculus, so just look at notes for that. Something to note is that in this module we will be working with a lot of vectors. 
+
+A derivative in mechanics is all about how fast things are changing, and what causes those changes. So ODEs in our case are optional, but unavoidable. 
+
+Consider position: $\vec{r}$ for instance. Now consider the derivative of position, namely velocity $\vec{v}$ 
+
+$$
+\dot{\vec{r}} = \frac{d\vec{r}}{dt} = \vec{f}  \cdot t 
+$$
+
+This is just another form of Newton's 2nd Law, but we can see that the force here, $\vec{f}$ is now treated as a vector. So when we integrate, our constant also has to be a vector 
+
+$$
+\int \frac{d\vec{r}}{dt} \ dt = \vec{r} = \int \vec{f} \ dt + \vec{c}
+$$
+
+The same goes for the integrating factor method, which makes sense because the integrating factor is a scalar, and we're multiplying the vectors by a scalar. 
+
+
+\subsection{2nd order ODEs}
+
+Instead of going through the whole path of auxiliary equation and then particular integral, we can find solutions to the most simplest form of 2nd order ODEs that we'll deal with, namely Hooke's Law.  
+
+For a spring, we have that $\vec{F} = - k \vec{x}$ 
+We can see that the force is proportional to the displacement and is opposite to displacement. Substituting Newton's 2nd law into Hooke's law, we have: 
+
+$$
+m \ddot{x} = - k x 
+$$
+And there we have - the canonical 2nd order ODE of mechanics. 
+
+The solution to this is: 
+$$
+x(t) = A \cos (\omega t) + B \sin (\omega t) \text{ where } \omega = \sqrt{\frac{k}{m}}
+$$
+
+
+\section{Projectile Motion}
+
+\textbf{Warning: from this point onwards, forget SUVAT ever existed.} 
+
+SUVAT is a just a result of acceleration being constant. However, as we'll come to discover with air resistance, working with vectors will be more useful. The lecture notes explain this rather well, so I will leave this as a fun exercise to the reader. 
+
+
+
+
+
+
 
 
 
