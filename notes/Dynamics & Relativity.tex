@@ -118,7 +118,96 @@ $$
 
 \textbf{Warning: from this point onwards, forget SUVAT ever existed.} 
 
-SUVAT is a just a result of acceleration being constant. However, as we'll come to discover with air resistance, working with vectors will be more useful. The lecture notes explain this rather well, so I will leave this as a fun exercise to the reader. 
+SUVAT is just a result of acceleration being constant. However, as we'll come to discover with air resistance, working with vectors will be more useful. The lecture notes explain this rather well, so I will leave this as a fun exercise to the reader. 
+
+
+\section{Projectile Motion w/ Air Resistance}
+
+Up to now, projectile motion has been fairly simple. Gravity is constant, motion separates nicely into horizontal and vertical components, and life is good. 
+
+As soon as we introduce air resistance, most of these comforts disappear. 
+
+\subsection{Cross products and the right-hand rule}
+
+The right-hand rule is one of those things that feels arbitrary at first, but it is really just a convention for keeping track of directions in three dimensions. Given two vectors $\vec{a}$ and $\vec{b}$, the cross product $\vec{a}\times\vec{b}$ produces a vector perpendicular to both. The right-hand rule simply tells us which of the two possible perpendicular directions we choose.
+
+
+\subsection{Why drag always opposes velocity}
+
+Air resistance (or drag) acts to oppose motion through the air. Think about it this way - drag removes energy from the system. 
+
+If the velocity of the particle is $\vec{v}$, then the drag force must point in the opposite direction, i.e.
+$$
+\text{direction of drag} = -\frac{\vec{v}}{|\vec{v}|}
+$$
+
+This immediately tells us that drag depends on velocity, not position.
+
+In the simplest model, drag is proportional to the speed of the object. So we have: 
+$$
+\vec{F}_{\text{drag}} = -k\vec{v}
+$$
+
+We can rewrite it as: 
+$$
+\vec{F}_{\text{drag}} = -k|\vec{v}|\,\hat{\vec{v}},
+\quad
+\hat{\vec{v}} = \frac{\vec{v}}{|\vec{v}|}
+$$
+
+Notice how this form is more useful because it separates the magnitude of the drag force (controlled by $|\vec{v}|$) from its direction (given by the unit vector $\hat{\vec{v}}$), and multiplying them together simply recovers $-k\vec{v}$.
+
+\subsection{Equations of motion with drag}
+
+Including gravity and linear drag, Newton's 2nd Law becomes
+$$
+m\dot{\vec{v}} = -mg\,\vec{k} - k\vec{v}
+$$
+
+This is a vector differential equation. At this point, the SUVAT equations are no longer applicable as acceleration is no longer constant, so and the motion must be solved directly from the differential equation.
+
+In many situations (eg: purely vertical motion), the velocity is always parallel to a single axis. In this case, we see that: 
+$$
+\vec{v}(t) = v(t)\vec{k},
+$$
+and the vector equation reduces to the scalar equation
+$$
+m\frac{dv}{dt} = -mg - kv.
+$$
+
+
+\subsection{Separable equations and terminal velocity}
+
+The equation
+$$
+\frac{dv}{dt} = -g - \frac{k}{m}v
+$$
+is clearly a 1st order linear ODE and can be solved explicitly. The solution has the form
+$$
+v(t) = -\frac{mg}{k} + Ce^{-kt/m}.
+$$
+
+As $t\to\infty$, the exponential term decays to zero and the velocity approaches a constant value:
+$$
+v_{\text{term}} = -\frac{mg}{k}.
+$$
+
+This is the \textbf{terminal velocity}, i.e. the point at which drag exactly balances weight, so the acceleration vanishes even though the object continues to move.
+
+\subsection{Maximum height with drag}
+
+Unlike motion without air resistance, energy is no longer conserved. This means that maximum height cannot be found using energy arguments.
+
+Instead, the maximum height occurs when the vertical velocity becomes zero. 
+
+We can find the time at which $v=0$ and then integrate the velocity to obtain the height reached. The presence of drag means that the ascent and descent are no longer symmetric.
+
+In some problems it is useful to remove time altogether, which can done well using the chain rule: 
+$$
+\frac{dv}{dt} = \frac{dv}{dx}\frac{dx}{dt} = v\frac{dv}{dx},
+$$
+And there we have it- Newton's 2nd law can be rewritten as an equation involving $v$ and $x$ only! 
+
 
 
 
