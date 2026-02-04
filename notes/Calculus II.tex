@@ -203,6 +203,163 @@ If we abstract things a bit more, the solutions to an ODE form a vector space, a
 
 \chapter{Wronskian}
 
+\section{The joy of discovery}
+
+Before I define anything or introduce new terms, let's start with something simple. I was particularly dissatisfied with this section of the module because I feel that mathematics should feel like a journey of discovery instead of a brick being slammed on the brain. So here is my attempt at `discovering' the Wronskian instead of telling you immediately what it is. 
+
+Suppose we're solving a homogeneous linear 2nd order ODE. Immediately, we can see two things:
+
+\begin{enumerate}
+    \item The set of solutions is a linear combination 
+    \item The solution space has dimension 2 
+\end{enumerate}
+
+This already sounds suspiciously like linear algebra, and that’s because it is. If we just take a step back from ODEs and just look at the operator, we can see that differentiation is linear, multiplication by functions is linear, and that addition is linear. So the moment we accept the linearity of differentiation, we can see that any linear combination of solution is also a solution. 
+
+So now, the real problem is not `find solutions', but rather how do we know whether two solutions are genuinely different, or just the same solution in disguise?
+
+If one solution is just a scalar multiple of the other, then we don’t have two degrees of freedom, we have only one, which is not enough 
+
+\subsection{Linear independence}
+
+Another point - what does `linearly independent' actually mean here?
+
+For vectors, we have a good idea of how to check for independence, namely to use a matrix, compute its determinant, and if it's non-zero, we have independent vectors. 
+
+But for functions, that doesn't seem obvious. Functions vary with variables, usually $x$ and their scalar multiples could also vary. Therefore, we are in need of a test. A test that checks whether two functions point in different directions or not. 
+
+
+If two functions were multiples of each other, we might expect:
+$$\frac{y_1(x)}{y_2(x)} = \text{constant}$$
+
+But if we think about it, what if one function vanishes? Or the ratio behaves badly? Or if the dependence only shows up in derivatives? 
+
+Looking at the points above, values alone are not enough, we need more information, like their derivatives.
+
+\subsection{Determinant}
+
+If two functions are really the same “direction”, then two things must be true: 
+\begin{itemize}
+    \item Their values are proportional 
+    \item Their slopes are proportional
+\end{itemize}
+
+That’s the key idea.
+
+So at a point $x$, we look at the vectors:
+$$(y_1(x), y_1'(x)), \quad (y_2(x), y_2'(x))$$
+
+And now we are back in linear algebra. If these two vectors point in the same direction, the area they span is zero.
+
+And how do we measure area? With a determinant! 
+
+Therefore, we consider: 
+\begin{vmatrix}
+y_1(x) & y_2(x) \\
+y_1'(x) & y_2'(x)
+\end{vmatrix}
+
+And this new fancy thing, is what we call the \textbf{Wronskian}
+
+
+\subsection{What the Wronskian actually measures}
+
+The signed area spanned by the solution curves and their derivatives at a point. Thus, a zero area means collapse, indicating that the functions are dependent. Conversely, a non-zero area implies two genuine directions, signifying independence. 
+
+So when we say:
+$$W(x) \neq 0$$
+what we really mean is that the solutions span the full solution space.
+
+For solutions of a linear homogeneous ODE, the Wronskian either vanishes everywhere or nowhere (on an interval). There is no `sometimes independent' and therefore, checking the Wronskian at one point is enough.
+
+
+At this point, we can see that: 
+\begin{itemize}
+    \item Solutions form a vector space
+    \item Fundamental solutions form a basis
+    \item The Wronskian is the determinant of that basis
+    \item Initial conditions are just coordinates in that basis
+\end{itemize}
+
+
+
+\subsection{Fun generalisations}
+
+For an nth-order ODE, we can define: 
+
+$$W(y_1,\dots,y_n)(x) =
+\begin{vmatrix}
+y_1 & \cdots & y_n \\
+y_1' & \cdots & y_n' \\
+\vdots & & \vdots \\
+y_1^{(n-1)} & \cdots & y_n^{(n-1)}
+\end{vmatrix}$$
+
+So we can generalise the Wronskian for nth order derivatives! 
+
+\section{Reduction of Order}
+
+Once again, instead of defining, I will aim to start from what we already know and build up from there. 
+
+We already know that a 2nd order ODE has a 2D solution space. And suppose we found one non-trivial (i.e. non-zero) solution $y_1$. And now, we want to find another solution, in particular, a different solution 
+
+We also know that the general solution must look like: $y = c_1 y_1 + c_2 y_2$. But we only have $y_1$, so we can see that we're missing one basis vector. And now this is once again a classic linear algebra problem, given one basis vector, how can we find another that's independent? 
+
+Thinking back to how we worked with Euler type equations, we can let our second solution be the form of: 
+$$
+y_2(x) = v(x) y_1(x)
+$$
+
+This is very similar to change of basis when working with vectors in linear algebra. 
+
+If $v$ were constant, $y_2$ would be a scalar multiple of $y_1$ and hence linearly dependent. Therefore, linear independence is equivalent to requiring $v'(x) \neq 0$.
+
+
+The Wronskian of $y_1$ and $y_2$ is
+$$
+W(y_1,y_2) =
+\begin{vmatrix}
+y_1 & y_2 \\
+y_1' & y_2'
+\end{vmatrix}
+= y_1 y_2' - y_1' y_2.
+$$
+Substituting $y_2 = v y_1$ and differentiating gives
+$$
+W(y_1, v y_1) = v'(x)\,y_1(x)^2
+$$
+
+Now we can see that the Wronskian is non-zero when $v'(x) \neq 0$, so the new solution introduces a genuinely independent direction in the solution space. 
+
+For any two solutions of the equation $y'' + p(x)y' + q(x)y = 0$, the Wronskian satisfies the first-order differential equation
+$$
+W'(x) = -p(x)\,W(x)
+$$
+
+So we can differentiate the Wronskian and using the original differential equation to eliminate second derivative to get:
+
+$$
+W(x) = C e^{-\int p(x)\,dx}
+$$
+
+\subsection{Constructing the second solution}
+
+Equating the two expressions for the Wronskian gives
+$$
+v'(x)\,y_1(x)^2 = C e^{-\int p(x)\,dx},
+$$
+so that
+$$
+v'(x) = \frac{C e^{-\int p(x)\,dx}}{y_1(x)^2}
+$$
+Integrating,
+$$
+v(x) = \int \frac{e^{-\int p(x)\,dx}}{y_1(x)^2}\,dx
+$$
+The second solution is therefore:
+$$
+y_2(x) = y_1(x)\int \frac{e^{-\int p(x)\,dx}}{y_1(x)^2}\,dx
+$$
 
 
 \part{Multivariable Calculus}
