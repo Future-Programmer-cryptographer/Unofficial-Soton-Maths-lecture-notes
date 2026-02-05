@@ -45,7 +45,10 @@ $$
 
 The key point here is \textbf{closure} - we combine two elements of a set which produces another element in the same set. Closure is another axiom satisfied by groups, which comes under binary operation.
 
-One might wonder why the term binary is used here, and this is simply because the operation reflects the number of inputs- two inputs in, one out. This ensures that other axioms like associativity, identity and inverse made sense. 
+One might wonder why the term binary is used here, and this is simply because the operation reflects the number of inputs- two inputs in, one out. This ensures that other axioms like associativity, identity and inverse made sense.
+
+% how many binary operations + why? 
+Given a finite set with $n$ elements, there are 
 
 \subsection{Well-defined operation}
 
@@ -67,12 +70,19 @@ Associativity is often taken for granted as an axiom, but it's what allows expre
 
 \subsection{Uniqueness}
 
-Every inverse is defined relative to the identity. In lecture notes and often in groups, only a right-inverse is assumed: $a * b = e$
+Every inverse is defined relative to the identity. In lecture notes and often in groups, only a right-inverse is assumed: $a \ast b = e$
 
 But using associativity, we can show that this also guarantees a left inverse, and that these two inverses are unique and equal to each other. 
 
 I won't go into detail, but the identity element and inverses in a group are unique. 
 
+\subsection{Identity Elements}
+
+Something that I thought it worth pointing out as mentioned in one of the problem classes, the group axioms don't tell us what the identity is, only wha it is. 
+
+So an element $e$ is the identity if $e \ast a = a \text { and } a \ast e = a , \forall a$ 
+
+So in a group table, the identity row and column reproduce the row and column headers, and there will be exactly one such element. 
 
 \subsection{Abelian Groups}
 
@@ -92,6 +102,8 @@ form an abelian group under multiplication
 
 Zero must be removed from these sets as it has no multiplicative inverses. 
 
+For an abelian group, the group table will be symmetric about the diagonal. 
+
 \subsection{Finite groups}
 
 A group is said to be \textbf{finite} if it has finitely many elements. They often appear in combinatorics, cryptography and puzzles. 
@@ -100,9 +112,54 @@ A group is said to be \textbf{finite} if it has finitely many elements. They oft
 
 In finite groups, we can have multiplication tables that encode the entire group structure. Each row and column must contain every element exactly once, which makes sense due to invertibility. 
 
+\textbf{Note: }If something is a group, then it follows the Sudoku rules, but if it obeys Sudoku rules, it may not necessarily be a group. So Sudoku satisfies the necessary conditions for a group table, but not necessary ones\footnote{The axiom that often gets broken in Sudoku is the associativity one}. 
+
 Other properties such as inverses and exponential laws are summarised well in lecture notes in \textbf{Proposition 1.4}
 
 What I will point out is that the reversal or the order also appears in matrix inverses, function composition and transposing products. 
+
+To think about exponent laws, think of what we're actually doing when it abstract the operation away from the numbers. I.e. we're repeating the same operation repeatedly. So exponents are really laws about repetition in an associative system with identity and inverses, which is by definition of a group! 
+
+\section{Cyclic Groups}
+
+Recall that an \textbf{order} of a group is just the number of elements in that group. And that the \textbf{order of an element} is simply how many times we need to combine the element with itself to get back to the identity for the first time. 
+
+Everything is measured relative to the identity. So if we have a group table, we can spot the identity by looking at the row and column that reproduces the row and column headers. 
+
+The most intuitive way to explain cyclic groups is to think of integers modulo $n$. Group Theory in this way actually comes from Number Theory.
+
+More formally, a group $G$ is cyclic if: 
+$$
+G = \langle a \rangle = {a^n : n \in \mathbb{Z}}
+$$
+
+So every element in the group is obtained by repeatedly applying the operation to a single element. 
+
+
+
+\subsection{Group order and elements}
+
+Another interesting thing is that the number of elements in a group doesn't always match the order in that group. Fun example below: 
+$$
+C_2 \times C_2 \neq C_4
+$$
+
+The above can be verified by doing question $4$ from Problem Sheet 2. 
+
+Another way to think about it is that the group $C_4$ is cyclic, i.e. the elements in that group are addition $ \mod 4$. And we if look at the element order, we will have elements of order $4$. 
+
+However, the group $C_2 \times C_2$ has every non-identity element of order $2$. So the group is not cyclic. 
+
+Both groups have element $4$, but their order is different. 
+
+Linking back to Number Theory, we can also see that for a cyclic group $C_n$, the order of an element $k$ is the smallest positive integer $m$ s.t. 
+$$
+mk \equiv 0 \mod n
+$$
+
+So the group itself has order $n$, but not every element has order $n$ 
+
+% something about primes only giving one group?? 
 
 \chapter{Fields and Vector Spaces}
 

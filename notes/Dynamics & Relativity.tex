@@ -121,11 +121,58 @@ $$
 SUVAT is just a result of acceleration being constant. However, as we'll come to discover with air resistance, working with vectors will be more useful. The lecture notes explain this rather well, so I will leave this as a fun exercise to the reader. 
 
 
-\section{Projectile Motion w/ Air Resistance}
+\section{Projectile Motion with Air Resistance}
 
 Up to now, projectile motion has been fairly simple. Gravity is constant, motion separates nicely into horizontal and vertical components, and life is good. 
 
 As soon as we introduce air resistance, most of these comforts disappear. 
+
+
+\subsection{Reduction of order}
+
+This was something which was also covered in calculus, and will be very useful to us when dealing with 2nd order ODEs and rewriting them as 1st order 
+
+Projectile motion with air resistance usually starts as a 2nd ODE due to Newton second law: 
+
+$$
+\ddot{\vec{r}} = \sum \vec{F}
+$$
+
+However, the forces in question depend on velocity, not position, so solving 2nd order ODE is rather painful. Hence, we'll do the most obvious thing: get velocity to be its own variable. 
+
+If we just let $\vec{v}(t) = \dot{\vec{r}}(t)$ 
+Then 
+$$
+\dot{\vec{v}}(t) = \ddot{\vec{r}}(t)
+$$
+
+Now we'll just have a 1st order ODE that is either separable or can be solved using the integrating factor method. And all we need to do is solve that ODE for $\vec{v}(t)$ and integrate that to recover $\vec{r}(t)$
+
+\subsubsection{Simple 1D example}
+
+I think it's worth looking at a very simple case of why reduction is insanely powerful. 
+
+Let's start with: 
+$$
+\ddot{x} = -g 
+$$
+
+This is a 2nd order ODE, so now we do our clever reduction trick of introducing velocity: 
+$$
+v = \dot{x} \implies \dot{v} = -g
+$$
+
+And now we solve for $v(t)$: 
+$$
+v(t) = -gt + c
+$$
+
+And now we just integrate to get position: 
+$$
+x(t) = \int v(t) \ dt = -\frac{1}{2} g t^2 + ct + d
+$$
+
+Notice how this is just SUVAT (as we assumed constant acceleration), but we never solved a 2nd order ODE directly, and instead reduced a 2nd order ODE to 1st order! 
 
 \subsection{Cross products and the right-hand rule}
 
@@ -150,7 +197,7 @@ $$
 
 We can rewrite it as: 
 $$
-\vec{F}_{\text{drag}} = -k|\vec{v}|\,\hat{\vec{v}},
+\vec{F}_{\text{drag}} = -k|\vec{v}|\,\hat{\vec{v}}
 \quad
 \hat{\vec{v}} = \frac{\vec{v}}{|\vec{v}|}
 $$
@@ -168,31 +215,14 @@ This is a vector differential equation. At this point, the SUVAT equations are n
 
 In many situations (eg: purely vertical motion), the velocity is always parallel to a single axis. In this case, we see that: 
 $$
-\vec{v}(t) = v(t)\vec{k},
+\vec{v}(t) = v(t)\vec{k}
 $$
 and the vector equation reduces to the scalar equation
 $$
-m\frac{dv}{dt} = -mg - kv.
+m\frac{dv}{dt} = -mg - kv
 $$
 
 
-\subsection{Separable equations and terminal velocity}
-
-The equation
-$$
-\frac{dv}{dt} = -g - \frac{k}{m}v
-$$
-is clearly a 1st order linear ODE and can be solved explicitly. The solution has the form
-$$
-v(t) = -\frac{mg}{k} + Ce^{-kt/m}.
-$$
-
-As $t\to\infty$, the exponential term decays to zero and the velocity approaches a constant value:
-$$
-v_{\text{term}} = -\frac{mg}{k}.
-$$
-
-This is the \textbf{terminal velocity}, i.e. the point at which drag exactly balances weight, so the acceleration vanishes even though the object continues to move.
 
 \subsection{Maximum height with drag}
 
@@ -204,13 +234,120 @@ We can find the time at which $v=0$ and then integrate the velocity to obtain th
 
 In some problems it is useful to remove time altogether, which can done well using the chain rule: 
 $$
-\frac{dv}{dt} = \frac{dv}{dx}\frac{dx}{dt} = v\frac{dv}{dx},
+\frac{dv}{dt} = \frac{dv}{dx}\frac{dx}{dt} = v\frac{dv}{dx}
 $$
 And there we have it- Newton's 2nd law can be rewritten as an equation involving $v$ and $x$ only! 
 
 
 
+\section{Quadratic Air Resistance and Terminal Velocity}
 
+\subsection{Intuition}
+
+With this section, I'll try to establish some intuition first because derivations of equations without intuition feels like witchcraft, plus it'll help with `making sense' when we actually do the equations. 
+
+Imagine standing at the top of the mathematics tower and dropping an object straight down.
+
+At the very start, the $\vec{v} =0$ and air resistance, will we will call $\vec{D} = 0$ as the only force acting on the object is gravity, $\vec{g}$. So the object accelerates almost like there's no air at all. 
+
+A bit later, the object is moving faster, so air resistance is now noticeable. And as we discussed earlier, the drag force points upwards, opposing the direction that velocity is acting in, which is also the direction of motion. The net/resultant force is still downward, but smaller than before. So acceleration decreases. 
+
+Much later, speed increases along with $\vec{D}$ until $\vec{D}$ almost balances the weight. So at some point, the weight = $\vec{D}$ and the net force and acceleration equal $0$. 
+
+However, it's important to note that $\vec{v}$ is not $0$ as the object is still moving. And this constant speed is \textbf{terminal velocity}, where the object stops accelerating because the forces balance (and not because it stops moving). 
+
+
+\subsection{The mathematical derivation}
+
+Now, a few assumptions to make before we do the derivation. 
+\begin{itemize}
+    \item Objects moves vertically 
+    \item Downward is positive 
+    \item Gravity acts downward 
+    \item Drag, $\vec{D}$ acts opposite to velocity, $\vec{v}$
+    \item $\vec{D}$ is quadratic, i.e. proportional to $v^2$
+\end{itemize}
+
+Now, our goal is to get an expression for $\vec{t}$. But throughout this process, let's keep in mind the intuition mentioned above. 
+
+
+
+Take downward as the positive direction. The forces acting on the particle are:
+
+\begin{itemize}
+  \item Weight due to gravity: $ \vec{g} = mg$ 
+  \item Drag: $\gamma v^2$ 
+\end{itemize}
+
+Using Newton's 2nd Law we get: 
+$$
+m\frac{dv}{dt} = mg - \gamma v^2
+$$
+
+Notice that this is a 1st order non-linear ODE. Diving both sides by $m$ we have: 
+$$
+\frac{dv}{dt} = g - \frac{\gamma}{m}v^2
+$$
+
+And now this is a separable ODE! 
+$$
+\frac{dv}{g - \frac{\gamma}{m}v^2} = dt
+$$
+
+We can factor out the constants and define: 
+$$
+v_{\text{term}} = \sqrt{\frac{mg}{c}}
+\quad
+\alpha = \sqrt{\frac{\gamma g}{m}}.
+$$
+
+We then get: 
+$$
+g - \frac{\gamma}{m}v^2
+= g\left(1 - \frac{v^2}{v_{\text{term}}^2}\right)
+$$
+
+And now we can integrate both sides: 
+$$
+\int \frac{dv}{1 - \left(\frac{v}{v_{\text{term}}}\right)^2}
+= g\int dt.
+$$
+
+This is a standard $\tanh$ integral: 
+$$
+\int \frac{du}{1-u^2} = \tanh^{-1}(u),
+$$
+Using the result above we finally get! 
+$$
+v_{\text{term}}\tanh^{-1}\!\left(\frac{v}{v_{\text{term}}}\right)
+= gt + c
+$$
+
+As the particle is released from rest, $v(0)=0 \implies c=0$.
+
+Rearranging:
+$$
+\tanh^{-1}\!\left(\frac{v}{v_{\text{term}}}\right)
+= \alpha t \implies 
+\boxed{
+v(t) = v_{\text{term}}\tanh(\alpha t)
+}.
+$$
+
+\subsection{Terminal velocity as a limit}
+
+Taking the limit as $t\to\infty$ we have- 
+$$
+\lim_{t\to\infty} v(t)
+= v_{\text{term}}\lim_{t\to\infty}\tanh(\alpha t)
+= v_{\text{term}}
+$$
+
+Thus the velocity approaches a constant value, known as the terminal velocity.
+
+\subsection{Dependence on mass}
+
+If we think about it, a heavier object has a larger $mg$. So to balance a larger weight, the $\vec{D}$ must be larger. And as $\vec{D}$ is proportional to speed, heavier objects must move faster before drag can balance weight! 
 
 
 
