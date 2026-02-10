@@ -229,7 +229,7 @@ Cycle notation is not unique, so order matters!
 
 The sign of a permutation tells us whether the permutation preserves the orientation or flips it. Every permutation can be built from swaps of two elements, which we define as a \textbf{transposition}. 
 
-So the question the sign, $sgn{\sigma}$, here is trying to answer is whether we need an odd or an even number of swaps to build the permutation. 
+So the question the sign, $sgn(\sigma)$, here is trying to answer is whether we need an odd or an even number of swaps to build the permutation. 
 
 This is defined as: 
 $$
@@ -247,7 +247,7 @@ This is somewhat like the determinant. If we think about it, swapping two rows o
 
 It absolutely blows my mind that permutation ciphers are basically permutation groups and all the things discussed above about cycles, inverse, composition show up in this. 
 
-A permutation cipher fixes a block of position, say $n$ letters, then rearranges those position using a permutation $\sigma \in \S_n$ 
+A permutation cipher fixes a block of position, say $n$ letters, then rearranges those position using a permutation $\sigma \in S_n$ 
 
 So if the plaintext block is: 
 $$
@@ -263,6 +263,57 @@ And bijection ensures that these ciphers are decryptable!
 
 
 \chapter{Fields and Vector Spaces}
+
+\section{Fields}
+
+A field, defined in this context, is not really the green space we may or may not be able to imagine. Anyway, it's not just a list a of axioms, it's kind of a system in which things are reversible. As a fair warning, linear algebra is going to get really abstract, so I will try my best to explain how things made (or didn't) make sense to me. 
+
+Formally, a \textbf{field} \mathbf{F} is: 
+\begin{itemize}
+    \item An \textbf{abelian group} under addition 
+    \item a multiplicative group on F \setminus \set{0} 
+    \item Multiplication distributive over addition
+\end{itemize}
+
+When looking at any axioms, it is worth thinking about why they are the way they are. In the case above, each axioms prevents something breaking later. The additive inverses ensures that cancellation works, and multiplicative inverses means that scaling can be undone, and distributivity means scaling respects addition. 
+
+This is also the reason why $\mathbb{Z}$ is not a field, as multiplication cannot always be done. However, things of the form $\mathbb{Z}/\mathbb{Z}_p$ where $p$ is prime is a field, and they are incredibly useful for encryption\footnote{Encryption in a field... something of this reminds of a post on the cipher forum}
+
+\section{Vector spaces}
+
+Recalling the axioms of vector spaces from Linear Algebra I, a vector space is simply a system where: 
+\begin{itemize}
+    \item Objects can be added together
+    \item Objects can be scaled by elements of a field
+\end{itemize}
+
+All this time, we're often used to imagining vectors as arrows, and the idea I want to convey here is that these objects don't have to be arrows. They could be functions, polynomials, matrices, sequences, etc. The only thing that matters here is the structure, not objects. 
+
+\subsection{`Vector space over \mathbf{F}'} 
+
+In most linear algebra textbooks, this is a phrase which is used almost all the time. So when we say `$V$ is a vector space over a field $F$', we are fixing which scalars are allowed. This will be very important as changing the field changes what `linear' means, i.e. $\mathbb{R}^n$ over $\mathbb{R}$ and $\mathbb{R}^n$ over $\mathbb{Q}$ are not the same vector space. 
+
+On another note, changing the field doesn't change the vectors themselves, but changes what combination we're allowed to form with them. Eg: if our field was $\mathbb{Q}$, then we cannot scale vectors by an irrational number 
+
+\section{Scalars and vectors}
+
+In the past, we have seen scalars as just real numbers, but now we can generalise scalars to being elements of an arbitrary field $F$. 
+
+The way I'd like to think about it, a scalar is: 
+\begin{itemize}
+    \item an element of the field $F$ 
+    \item something that acts on the vectors
+\end{itemize}
+
+Whereas as vector is: 
+\begin{itemize}
+    \item an element of the vector space $V$
+    \item something that gets acted upon
+\end{itemize}
+
+This is also why we have two separate distribution laws (look in notes), and why $0_F \neq 0_V$, and $1_F$ exists but there is no $1_V$ 
+
+
 
 \chapter{Bases}
 

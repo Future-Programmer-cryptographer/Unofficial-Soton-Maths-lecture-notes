@@ -361,6 +361,96 @@ $$
 y_2(x) = y_1(x)\int \frac{e^{-\int p(x)\,dx}}{y_1(x)^2}\,dx
 $$
 
+\section{Inhomogeneous ODEs}
+
+We know how to solve these equations and make the dark magic ansatz that seems to work out fine, so I won't be covering the method. 
+
+All my notes will aim to do is to explore how one would come about that ansatz and why it makes sense. 
+
+Inhomogeneous ODEs are in the form of: 
+
+$$
+y^{\prime \prime} + p(x) y^{\prime} + q(x)y = r(x) 
+$$
+
+Intuition first, inhomogeneous ODEs are all about external forces and having another force in the motion. So the entire problem we're trying to solve is, how does this linear system respond to an external input? 
+
+
+\subsection{Undetermined coefficients}
+
+If you want to learn how the method works, once again, read up the lecture notes. On the other hand if you'd like some more insight from this person who struggled to gain insight into why this works, read on.. 
+
+In the first instance, this method feels like educated guessing, but it just exploits the property of linear differential operators being a map. 
+
+If the forcing term $r(x)$ has a simple form, then the system responds with the same kind of behaviour. 
+
+Think of it as closure under differentiation. When we differentiate exponentials, we get exponentials, polynomials differentiate to polynomials, and sum of trig functions differentiate to trig functions. 
+
+Now, the other question, why must our trial function be different from the homogeneous solutions. 
+
+Geometrically, differential equations are just vector spaces, and the solutions for our complementary function spans the solution space of the homogeneous operator, so our trial function must be a point out of it. So if our trial function overlaps with the homogeneous space, we just multiply it by $x$ to push it out, which also satisfies the linear independent criteria of the Wronskian. 
+
+\subsection{Variation of Parameters}
+
+Let's just forget the formula for a minute and think about the idea. A homogeneous solution is the form of: 
+$$
+y_h = c_1y_1 + c_2y_2
+$$
+
+These constants are just coordinates of the solution space. So variation of parameters (kinda gives away in the name) is just seeing what happens when we make those coordinates move. 
+
+So we let: 
+$$
+y_p = u_1(x)y_1 + u_2(x) y_2
+$$
+
+We're essentially seeing what happens to the coefficients with the forcing term involved. 
+
+Another reason to think why this makes sense is because $y_1, y_2$ already span the space of homogeneous solutions, so any solution must be a combination of them. 
+
+Eventually, we end up solving: 
+$$
+\begin{pmatrix}
+    y_1 & y_2 \\
+    y^{\prime}_1 & y^{\prime}_2 
+\end{pmatrix}
+\begin{pmatrix}
+    u_1 \\
+    u_2
+\end{pmatrix}
+= \begin{pmatrix}
+    0 \\ 
+    r(x)
+\end{pmatrix}
+$$
+
+This matrix is our basis, and the determinant is the Wronskian again. Homogeneous solutions form a basis \footnote{More on this later in multivariable calculus.  
+}. 
+
+\section{Boundary Value Problems}
+
+So far, we have been dealing with initival value problems, or IVPs. Given
+$$
+y(x_0) = a, \quad y^{\prime}_(x_0) = b
+$$
+
+These conditions essentially fix coordinates in a solution space, and always have a unique solution. 
+
+Now we are give some different information: 
+$$
+y(a) = \alpha, \quad y(b) = \beta
+$$
+
+These conditions constrain the solution at two different points and can have either: 
+\begin{itemize}
+    \item no solutions 
+    \item one solution 
+    \item infinitely many solutions 
+\end{itemize}
+
+Geometrically again, all BVPs are doing is telling us how the solution space reacts with the boundary constraints. And the Wronskian appears again here because that tells us whether a basis exists or not. 
+
+Once again, they computational method behind this can be foudn in the notes with worked examples. 
 
 \part{Multivariable Calculus}
 
