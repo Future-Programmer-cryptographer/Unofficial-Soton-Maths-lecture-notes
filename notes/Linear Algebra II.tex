@@ -314,6 +314,39 @@ Whereas as vector is:
 This is also why we have two separate distribution laws (look in notes), and why $0_F \neq 0_V$, and $1_F$ exists but there is no $1_V$ 
 
 
+\section{Functions as Vectors}
+
+Let's define a function: 
+$$
+\set{ f: S \rightarrow F}
+$$
+
+what this is showing us, or rather telling us, is all the functions from a set $S$ into a field $F$. Each element of this vector space is a function. 
+
+Addition and scalar multiplication for functions then works pointwise, i.e. everything happens at each stage: 
+$$
+(f+g)(s) = f(s) + g(s), \quad (\lambda f)(s) = \lambda f(s) 
+$$
+
+We can go through the axioms of vector space see that this really is a vector space, but that's explained in the notes so do refer to them. 
+
+However on that note, closure and associativity comes from the field axioms, but identity is the $0_F$. 
+
+\subsection{0}
+
+The zero function is: 
+$$
+0(s) = 0_F , \quad \forall s \in S 
+$$
+
+So it is important to note notice again that $0_F$ is a zero in the field, whereas the $0_V$ is the zero function (vector). 
+
+Funnily enough the set of all $m \times n$ matrices form a vector space. A matrix is: 
+$$
+A: \set{ 1,... m} \times \set{1,...n} \rightarrow F 
+$$
+
+So we can see that it's just a function from an indexed set into a  field, so $M_{m \times n} (F)$ is a vector space. 
 
 \chapter{Bases}
 

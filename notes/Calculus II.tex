@@ -450,7 +450,75 @@ These conditions constrain the solution at two different points and can have eit
 
 Geometrically again, all BVPs are doing is telling us how the solution space reacts with the boundary constraints. And the Wronskian appears again here because that tells us whether a basis exists or not. 
 
-Once again, they computational method behind this can be foudn in the notes with worked examples. 
+Once again, they computational method behind this can be found in the notes with worked examples. 
+
+\section{Eigenvalue Problem}
+
+Recall from Linear Algebra what eigenvalues and eigevectors were (I promise this will be helpful in understanding how and why they work in calculus): 
+$$
+A\vec{v} = \lambda \vec{v}
+$$
+
+Geometrically, this represented the transformation $A$ that sends $\vec{v}$ to a scalar multiple of itself, i.e. the direction of $\vec{v}$ is the same, but its length changes. 
+
+Now, in the world of ODEs, when we write introduce notation like: 
+$$
+L[y] = \lambda y^{\prime \prime}
+$$
+
+where $L$ is a differential operator, this follows exactly the same structure as $Av = \lambda v$, with the main difference being that in linear algebra, $A$ is a matrix whereas in ODEs, $L$ is what we call a differential operator. 
+
+Now, what do we mean by the eigenvalue of an operator? It's just a number $\lambda$ such that the operator acts like a scaling on a function. 
+
+When we have something like: 
+$$
+-y^{\prime \prime} = \lambda y
+$$
+
+The question we are asking ourselves is which functions keep their shape when we differentiate them twice and negate them? 
+
+\subsection{Boundary conditions}
+
+Now, eigenvalue problems differ from normal ODE solving. Normally, we are given initial conditions from which we can always find a unique solution. But now, with the addition of this new eigenvalue, our boundary conditions are constraints on allowed shapes, i.e., for which $\lambda$ does a non trivial solution exist that satisfies the boundary conditions?
+
+\subsection{Solution space}
+
+Now, when we solve something like $-y^{\prime \prime} = \lambda y$ with boundary conditions, $y(0) = 0, y(L) = 0$, we get different behaviours depending on $\lambda$. 
+
+There are three cases for $\lambda: <0, 0, >0$. They are discussed in the lecture notes so I won't go over them. But I will try and give some intuition behind why only positive $\lambda$ works for non-trivial solutions. 
+
+Before I give away the solution, think about it geometrically. Which functions can fit in between the boundary conditions $0$ and $L$ at both ends? A linear function won't, exponentials may explode or decay, so we're left with oscillatory functions. Thinking back to where we get them from, they come from imaginary roots, which we get from $\lambda >0$
+
+So let $\lambda = \mu^2$, this is just another way of writing: $\mu = \sqrt{\lambda}$. Now our equation becomes 
+$$
+y^{\prime \prime} + \mu^2 y = 0
+$$
+
+The solutions to these are: 
+$$
+y = A \sin(\mu x) + B \cos(\mu x) 
+$$
+
+After applying the boundary conditions we get: 
+
+$$
+y(0) = 0 \implies B = 0 \text{ and } y(L) = 0 \implies \sin(\mu L) = 0
+$$
+This happens when: 
+$$
+\mu L = n \pi \implies \mu = \frac{n\pi}{L} \implies \lambda_n = \left( \frac{n\pi}{L}^2 \right )
+$$
+
+This also links to the wave function equation, more of which can be foudn in the notes. 
+
+
+\subsection{Eigenfunctions}
+
+Similar to eigenvectors, the eigenfunctions also form a basis from which we can expand arbitrary functions. 
+
+So instead of vectors in $\mathbb{R^n}$, we have vectors in an infinite dimensional space of functions. 
+
+And this concludes ODEs, and now we move onto more fun stuff in Multivariable Calculus!! 
 
 \part{Multivariable Calculus}
 
